@@ -61,3 +61,12 @@
 #*.PDF   diff=astextplain
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
+
+*.cs linguist-language=C#
+*.csproj linguist-language=C#
+*.sln linguist-language=C#
+*.razor linguist-language=C#
+wwwroot/** linguist-vendored
+*.html linguist-vendored
+*.js linguist-vendored
+*.css linguist-vendored
