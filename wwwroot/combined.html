@@ -29,6 +29,10 @@
     <div class="row" style="margin-bottom:8px">
       <img id="mathImg2" width="180" height="60" alt="数学题验证码" />
       <button class="btn" id="btnGenMath2">生成</button>
+      <select id="mathFormat2">
+        <option value="svg">SVG</option>
+        <option value="png">PNG</option>
+      </select>
     </div>
     <div class="row">
       <input id="mathAnswer2" type="number" placeholder="请输入答案" />
@@ -42,6 +46,10 @@
     <div class="row" style="margin-bottom:8px">
       <img id="textImg2" width="180" height="60" alt="字母数字验证码" />
       <button class="btn" id="btnGenText2">生成</button>
+      <select id="textFormat2">
+        <option value="svg">SVG</option>
+        <option value="png">PNG</option>
+      </select>
     </div>
     <div class="row">
       <input id="textInput2" type="text" placeholder="不区分大小写" />
@@ -56,7 +64,8 @@
     let textId2 = null
 
     async function genMathCombined(){
-      const res = await fetch(`${apiBase}/api/captcha/math/new-with-image`)
+      const fmt = document.getElementById('mathFormat2').value
+      const res = await fetch(`${apiBase}/api/captcha/math/new-with-image?format=${fmt}`)
       const data = await res.json()
       mathId2 = data.id
       const img = document.getElementById('mathImg2')
@@ -74,7 +83,8 @@
     }
 
     async function genTextCombined(){
-      const res = await fetch(`${apiBase}/api/captcha/text/new-with-image`)
+      const fmt = document.getElementById('textFormat2').value
+      const res = await fetch(`${apiBase}/api/captcha/text/new-with-image?format=${fmt}`)
       const data = await res.json()
       textId2 = data.id
       const img = document.getElementById('textImg2')
@@ -92,8 +102,10 @@
     }
 
     document.getElementById('btnGenMath2').addEventListener('click', genMathCombined)
+    document.getElementById('mathFormat2').addEventListener('change', genMathCombined)
     document.getElementById('btnVerifyMath2').addEventListener('click', verifyMathCombined)
     document.getElementById('btnGenText2').addEventListener('click', genTextCombined)
+    document.getElementById('textFormat2').addEventListener('change', genTextCombined)
     document.getElementById('btnVerifyText2').addEventListener('click', verifyTextCombined)
 
     document.addEventListener('DOMContentLoaded', () => {

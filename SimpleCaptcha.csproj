@@ -7,5 +7,8 @@
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="10.0.1" />
     <PackageReference Include="ZiggyCreatures.FusionCache" Version="2.4.0" />
+    <PackageReference Include="SkiaSharp.NativeAssets.Win32" Version="3.119.1" />
+    <PackageReference Include="Svg.Skia" Version="3.2.1" />
+    <PackageReference Include="SkiaSharp" Version="3.119.1" />
   </ItemGroup>
 </Project>

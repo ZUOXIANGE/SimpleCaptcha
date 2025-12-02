@@ -29,6 +29,10 @@
     <div class="row" style="margin-bottom:8px">
       <img id="mathImg" width="180" height="60" alt="数学题验证码" />
       <button class="btn" id="btnRefreshMath">换一张</button>
+      <select id="mathFormat">
+        <option value="svg">SVG</option>
+        <option value="png">PNG</option>
+      </select>
     </div>
     <div class="row">
       <input id="mathAnswer" type="number" placeholder="请输入答案" />
@@ -43,6 +47,10 @@
     <div class="row" style="margin-bottom:8px">
       <img id="textImg" width="180" height="60" alt="字母数字验证码" />
       <button class="btn" id="btnRefreshText">换一张</button>
+      <select id="textFormat">
+        <option value="svg">SVG</option>
+        <option value="png">PNG</option>
+      </select>
     </div>
     <div class="row">
       <input id="textInput" type="text" placeholder="不区分大小写" />

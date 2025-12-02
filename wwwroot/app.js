@@ -11,7 +11,8 @@ async function newMath() {
   const data = await res.json()
   mathId = data.id
   const img = document.getElementById('mathImg')
-  img.src = `${apiBase}/api/captcha/math/image/${mathId}?t=${Date.now()}`
+  const fmt = document.getElementById('mathFormat')?.value || 'svg'
+  img.src = `${apiBase}/api/captcha/math/image/${mathId}?format=${fmt}&t=${Date.now()}`
   document.getElementById('mathStatus').textContent = ''
   document.getElementById('mathAnswer').value = ''
 }
@@ -36,6 +37,7 @@ async function verifyMath() {
 // 绑定数学题按钮事件
 document.getElementById('btnRefreshMath').addEventListener('click', newMath)
 document.getElementById('btnVerifyMath').addEventListener('click', verifyMath)
+document.getElementById('mathFormat').addEventListener('change', newMath)
 
 newMath()
 
@@ -45,7 +47,8 @@ async function newText() {
   const data = await res.json()
   textId = data.id
   const img = document.getElementById('textImg')
-  img.src = `${apiBase}/api/captcha/text/image/${textId}?t=${Date.now()}`
+  const fmt = document.getElementById('textFormat')?.value || 'svg'
+  img.src = `${apiBase}/api/captcha/text/image/${textId}?format=${fmt}&t=${Date.now()}`
   document.getElementById('textStatus').textContent = ''
   document.getElementById('textInput').value = ''
 }
@@ -66,5 +69,6 @@ async function verifyText() {
 // 绑定文字验证码按钮事件
 document.getElementById('btnRefreshText').addEventListener('click', newText)
 document.getElementById('btnVerifyText').addEventListener('click', verifyText)
+document.getElementById('textFormat').addEventListener('change', newText)
 
 newText()
